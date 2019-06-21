@@ -13,9 +13,9 @@ class NavBar extends Component {
                 <div className="container">
                     <NavLink exact to="/AdminHome/" className="brand-logo">SIIS-Admin</NavLink>
                     <ul className="right">
-                        <li> <NavLink exact to='/AdminHome/Admins'>Admins</NavLink></li>
+                        <li> <NavLink exact to='/AdminHome/'>Admins</NavLink></li>
                         <li> <NavLink exact to='/AdminHome/Instructors'>Instructors</NavLink></li>
-                        <li> <NavLink exact to='/AdminHome/Courses'>Courses</NavLink></li>
+                        <li> <NavLink exact to='/AdminHome/Courses'> Courses </NavLink></li>
                         <li> <NavLink exact to='/' onClick={this.handleLogout}>Logout</NavLink></li>
 
                     </ul>

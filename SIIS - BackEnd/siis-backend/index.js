@@ -18,7 +18,7 @@ if (!config.get('jwtPrivateKey')) {
     process.exit(1);
 }
 //Connect to mongoDB
-mongoose.connect('mongodb://localhost/SIIS', { useNewUrlParser: true }).then(() => {
+mongoose.connect('mongodb+srv://melan96:melan96@mongo-todo-yebxu.mongodb.net/test?retryWrites=true', { useNewUrlParser: true }).then(() => {
     console.log('Successfully connected to MongoDB');
 }).catch((err) => {
     console.log('Could not connect to MongoDB');

@@ -7,7 +7,7 @@ class Courses extends Component {
 
         return (
             <div className="CourseSelection">
-
+                <h1>hello</h1>
 
 
             </div>

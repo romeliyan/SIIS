@@ -8,8 +8,19 @@ import EnrolledCourses from "./enrolledCourses";
 import StudentNavBar from "./studentNavBar";
 import StudentProfile from "./studentProfile.comp";
 import StudentMainUI from "./studentMainUI.comp";
+import ConfirmationCode from "./confirmEnrollment";
 
 class HomeRoot extends Component {
+  state = {
+    enrollmentKEY: ""
+  };
+
+  setSelectedItem(e) {
+    this.setState({
+      enrollmentKEY: e
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -17,19 +28,27 @@ class HomeRoot extends Component {
 
         <ProtectedRoute exact path="/StudentHome/" component={StudentMainUI} />
 
-        <ProtectedRoute exact path="/StudentHome/profile" component={StudentProfile} />
         <ProtectedRoute
           exact
-          path="/StudentHome/enroll"
-          component={ViewCourses}
+          path="/StudentHome/profile"
+          component={StudentProfile}
         />
         <ProtectedRoute
           exact
-          path="/StudentHome/enrolledCourses"
+          path="/StudentHome/enrollme"
+          component={ConfirmationCode}
+        />
+        <ProtectedRoute
+          exact
+          path="/StudentHome/viewCourses"
+          component={ViewCourses}
+          setState = {this.setSelectedItem}
+        />
+        <ProtectedRoute
+          exact
+          path="/StudentHome/enrolledToCourses"
           component={EnrolledCourses}
         />
-
-
       </BrowserRouter>
     );
   }

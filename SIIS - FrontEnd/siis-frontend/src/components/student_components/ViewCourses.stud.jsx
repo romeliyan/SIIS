@@ -1,60 +1,36 @@
 import React, { Component } from "react";
-
+import jwtToken from "jwt-decode";
+import auth from "../../middleware/auth";
 import axios from "axios";
 class ViewCourses extends Component {
   state = {
-    courseList: [
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      }
-    ],
+    
+    userName: "",
+    courseList: [],
     selectedCourse: {}
   };
 
-  //   componentWillMount() {
-  //     axios
-  //       .get("http://localhost:4001/api/courses")
-  //       .then(res => {
-  //         this.setState({
-  //           traindata: res.data
-  //         });
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  enrollToCourse = e => {
-    this.setState(
-      {
-        selectedCourse: e
-      },
-      function() {
-        console.log("SELECTED -> " + this.state.selectedCourse.courseName);
-      }
-    );
-  };
-
-  itmDetails = input => {
-    this.props.priceSetState(input.Price);
-  };
+  // componentWillMount() {
+  //   const token = jwtToken(auth.getDecodedToken);
+  //   console.log("-->" + token);
+  // }
+  componentDidMount() {
+    axios
+      .get("http://localhost:3000/api/courses")
+      .then(res => {
+        this.setState(
+          {
+            courseList: res.data
+          },
+          function() {
+            console.log(this.state.courseList);
+          }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
@@ -69,14 +45,10 @@ class ViewCourses extends Component {
                   </div>
 
                   <div className="panel-body">
-                    <h5>Course Name : {item.courseName}</h5>
-                    <h5>CourseID : {item.courseID}</h5>
-                    <h5>Year : {item.courseYear}</h5>
-                    <h5>Semester : {item.courseSemester}</h5>
-                    <h5>
-                      Enrollment Key :{" "}
-                      {JSON.stringify(item.courseEnrollmentKey)}
-                    </h5>
+                    <h5>Course Name : {item.name}</h5>
+                    <h5>Lecturer : {item.lecture}</h5>
+                    <h5>Course Code : {item.code}</h5>
+                    <h5>Enroll Key : {item.enrollKey}</h5>
 
                     <div style={{ float: "right" }}>
                       <a href="/enroll/validate">

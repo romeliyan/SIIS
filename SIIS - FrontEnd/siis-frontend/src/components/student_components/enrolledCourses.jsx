@@ -1,42 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
-class EnrolledCourses extends Component {
+
+class EnrolledToCourses extends Component {
   state = {
     studentCourseList: [],
-    fetchedCoursesList: [
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      },
-      {
-        courseName: "fadfs",
-        courseID: "2105",
-        courseYear: "25"
-      }
-    ]
+    fetchedCoursesList: []
   };
 
-  componentWillMount() {
-    const courseID = this.state.studentCourseList[0];
-    axios
-      .get("/api/courses/" + courseID)
-      .then(res => console.log(res))
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      });
+  componentDidMount() {
+    axios.get("http://localhost:3000/api/courses").then(res => {
+      this.setState((this.state.courses = res.data));
+      console.log(this.state.courses);
+    });
   }
+
+  
 
   render() {
     return (
@@ -70,4 +48,4 @@ class EnrolledCourses extends Component {
   }
 }
 
-export default EnrolledCourses;
+export default EnrolledToCourses;

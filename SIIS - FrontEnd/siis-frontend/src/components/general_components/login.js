@@ -59,7 +59,7 @@ class Login extends Component{
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20" onClick={this.handleButton}> Sign In</button>
+                        <button className="FormField__Button mr-20" onClick={this.handleButton}> Sign In</button> &nbsp;
                         <Link to="/SignUp" className="FormField__Link">Create an account</Link>
                     </div>
                 </form>

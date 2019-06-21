@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import jwtToken from "jwt-decode";
 import auth from "../../middleware/auth";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 class ViewCourses extends Component {
   state = {
-    
     userName: "",
     courseList: [],
     selectedCourse: {}
+  };
+
+  enrollToCourse = e => {
+    localStorage.setItem("key", e.enrollKey);
+    this.props.history.push("/StudentHome/enrollme");
   };
 
   // componentWillMount() {
@@ -51,15 +56,13 @@ class ViewCourses extends Component {
                     <h5>Enroll Key : {item.enrollKey}</h5>
 
                     <div style={{ float: "right" }}>
-                      <a href="/enroll/validate">
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          onClick={() => this.enrollToCourse(item)}
-                        >
-                          Enroll to Course
-                        </button>
-                      </a>
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => this.enrollToCourse(item)}
+                      >
+                        Enroll to Course
+                      </button>
                     </div>
                   </div>
                 </div>

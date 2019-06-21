@@ -7,16 +7,14 @@ class ConfirmationCode extends Component {
   }
 
   OnClickVerifyKey = () => {
+    console.log(localStorage.getItem("key"));
     let userInputKey = document.getElementById("confirmkey").value;
 
-    if (userInputKey == this.props.values.selectedCourse.courseName) {
+    if (userInputKey == localStorage.getItem("key")) {
       alert("Success ...");
-      this.props.nextPage();
+      this.props.history.push("/StudentHome/");
     } else {
-      alert(
-        "Your Verification Key is Invalid" +
-          this.props.values.selectedCourse.courseName
-      );
+      alert("Your Verification Key is Invalid");
     }
   };
 

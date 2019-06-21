@@ -42,7 +42,7 @@ class HomeRoot extends Component {
           exact
           path="/StudentHome/viewCourses"
           component={ViewCourses}
-          setState = {this.setSelectedItem}
+          setState={this.setSelectedItem}
         />
         <ProtectedRoute
           exact

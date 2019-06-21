@@ -4,9 +4,9 @@ import axios from 'axios';
 import { Input, FormGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button } from 'reactstrap';
 
 
-class AdminViewDelete extends Component {
+class InstructorViewDelete extends Component {
     state = {
-        admins: [],
+        instructors: [],
 
         firstName: '',
         lastName: '',
@@ -23,62 +23,62 @@ class AdminViewDelete extends Component {
     }
     onClick = e => {
         console.log(this.state);
-        axios.post('http://localhost:3000/api/admin', this.state).then(
+        axios.post('http://localhost:3000/api/instructor', this.state).then(
             res => {
-                let { admins } = this.state;
-                admins.push(res.data);
+                let { instructors } = this.state;
+                instructors.push(res.data);
             }
         )
     }
 
-    _refreshAdmins() {
-        axios.get('http://localhost:3000/api/admin').then((response) => {
+    _refreshInstructors() {
+        axios.get('http://localhost:3000/api/instructor').then((response) => {
             this.setState({
-                admins: response.data
+                instructors: response.data
             })
         });
     }
 
-    deleteAdmin(name) {
-        axios.delete('http://localhost:3000/api/admin/' + name).then((response) => {
-            this._refreshAdmins();
+    deleteInstructor(name) {
+        axios.delete('http://localhost:3000/api/instructor/' + name).then((response) => {
+            this._refreshInstructors();
         });
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/api/admin').then(
+        axios.get('http://localhost:3000/api/instructor').then(
             res => {
 
                 this.setState(
-                    this.state.admins = res.data);
-                console.log(this.state.admins)
+                    this.state.instructors = res.data);
+                console.log(this.state.instructors)
             }
         )
     }
     render() {
 
 
-        const { admins } = this.state;
-        const adminList = admins.length ? (
+        const { instructors } = this.state;
+        const instructorList = instructors.length ? (
 
-            admins.map(admin => {
+            instructors.map(instructor => {
                 return (
-                    <tr key={admin._id}>
-                        <td>{admin.firstName}</td>
-                        <td>{admin.lastName}</td>
-                        <td>{admin.email}</td>
-                        <td>{admin.nic}</td>
-                        <td>{admin.mobileNumber}</td>
+                    <tr key={instructor._id}>
+                        <td>{instructor.firstName}</td>
+                        <td>{instructor.lastName}</td>
+                        <td>{instructor.email}</td>
+                        <td>{instructor.nic}</td>
+                        <td>{instructor.mobileNumber}</td>
 
                         <td>
 
-                            <Button color="danger" size="sm" onClick={this.deleteAdmin.bind(this, admin._id)}>Delete</Button>
+                            <Button color="danger" size="sm" onClick={this.deleteInstructor.bind(this, instructor._id)}>Delete</Button>
                         </td>
                     </tr>
                 )
             })
         ) : (
-                <div>No Admins</div>
+                <div>No Instructors</div>
             );
 
 
@@ -100,7 +100,7 @@ class AdminViewDelete extends Component {
                         </thead>
 
                         <tbody>
-                            {adminList}
+                            {instructorList}
                         </tbody>
                     </Table>
 
@@ -113,4 +113,4 @@ class AdminViewDelete extends Component {
     }
 }
 
-export default withAlert()(AdminViewDelete);
+export default withAlert()(InstructorViewDelete);

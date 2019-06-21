@@ -770,3 +770,32 @@ td{
 .spanLayout{
   table-layout: fixed;
 }
+
+.ih3{
+ color: #225E62;
+}
+
+.form1{
+ color: #52C4B9;
+  
+}
+
+.f0{
+  padding-top: 1cm;
+  padding-left: 7cm;
+  padding-right: 7cm;
+}
+
+.f1{
+  padding-left: 7cm;
+  padding-right: 7cm;
+  font-size: 12px;
+}
+
+.l1{
+  font-size: 16px;
+}
+
+.ff{
+  padding-left: 3cm;
+}

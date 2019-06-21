@@ -72,53 +72,57 @@ class Admins extends Component {
         return (
             <div className="">
 
-                <h3>Register Admins</h3>
+                <h3 className="ih3 center">Register Admins</h3>
 
                 <form className="" onSubmit={this.handleSubmit}>
 
-                    <div className="">
-                        <label className="" htmlFor="firstName">Admin First Name</label>
+                    <div className="f0">
+                        <label className="l1" htmlFor="firstName">Admin First Name</label>
                         <input type="text" id="firstName" className="" placeholder="Enter first name" name="firstName" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="lastName">Admin Last Name</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="lastName">Admin Last Name</label>
                         <input type="text" id="lastName" className="" placeholder="Enter last name" name="lastName" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="email">Email</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="email">Email</label>
                         <input type="email" id="email" className="" placeholder="Enter email address" name="email" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="nic">NIC (Optional)</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="nic">NIC (Optional)</label>
                         <input type="text" id="nic" className="" placeholder="Enter NIC" name="nic" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="mobileNumber">Mobile Number</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="mobileNumber">Mobile Number</label>
                         <input type="text" id="mobileNumber" className="" placeholder="Enter mobile number" name="mobileNumber" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="password1">Password</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="password1">Password</label>
                         <input type="password" id="password1" className="" placeholder="Enter password" name="password1" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <label className="" htmlFor="password2">Re-Enter Password</label>
+                    <div className="f1">
+                        <label className="l1" htmlFor="password2">Re-Enter Password</label>
                         <input type="password" id="password2" className="" placeholder="Re-enter password" name="password2" onChange={this.handleChange} />
                     </div>
 
-                    <div className="">
-                        <Button color="info" size="sm" >Register</Button>
+                    <div className="f1">
+                        <Button style={{ backgroundColor: "green" }} size="sm" >Register Admin</Button>
                     </div>
                 </form>
 
-                <h3>Remove Admins</h3>
+                <h3 className="ih3 center">Remove Admins</h3>
 
+                <br />
+                <br />
                 <AdminViewDelete />
+                <br />
+                <br />
 
             </div>
 

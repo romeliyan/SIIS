@@ -6,34 +6,34 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 
-    email:{
-        type:String,
+    email: {
+        type: String,
         required: true,
         minLength: 5,
         maxLength: 255,
         unique: true
     },
-    password:{
-        type:String,
+    password: {
+        type: String,
         required: true,
         minLength: 5,
         maxLength: 255,
     },
 
     userType: {
-        type:String,
+        type: String,
         required: true
     }
 });
 
-UserSchema.methods.generateAuthToken = function(){
-    const token = jwt.sign({_id: this._id, type: this.userType}, config.get('jwtPrivateKey'));
+UserSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign({ _id: this._id, type: this.userType }, config.get('jwtPrivateKey'));
     return token;
 }
 
 const User = mongoose.model('User', UserSchema);
 
-function validateUser(user){
+function validateUser(user) {
 
     const userValidateSchema = {
         email: Joi.string().min(5).max(255).required().email(),
@@ -44,7 +44,7 @@ function validateUser(user){
     return Joi.validate(user, userValidateSchema);
 }
 
-function validateUserForLogin(user){
+function validateUserForLogin(user) {
 
     const userValidateSchemaForLogin = {
         email: Joi.string().min(5).max(255).required().email(),

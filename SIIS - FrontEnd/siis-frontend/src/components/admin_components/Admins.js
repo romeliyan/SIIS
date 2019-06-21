@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withAlert } from 'react-alert';
 import axios from 'axios';
+import AdminViewDelete from './AdminViewDelete';
+import { Input, FormGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button } from 'reactstrap';
 
 class Admins extends Component {
 
@@ -37,12 +39,28 @@ class Admins extends Component {
                 password: this.state.password1
             }
 
+            const user = {
+                email: this.state.email,
+                password: this.state.password1,
+                userType: 'Admin'
+            }
+
             axios.post('http://localhost:3000/api/admin/', admin).then(res => {
                 this.props.alert.success('Registration Successful');
-                this.props.history.push('/');
+                this.props.history.push('/HomeAdmin');
+
+                axios.post('http://localhost:3000/api/auth/user/', user).then(res => {
+                    this.props.alert.success('Registration Successful');
+                    this.props.history.push('/HomeAdmin');
+                }).catch(err => {
+                    this.props.alert.error(err.response.data);
+                });
+
             }).catch(err => {
                 this.props.alert.error(err.response.data);
             });
+
+
         }
 
 
@@ -53,6 +71,9 @@ class Admins extends Component {
 
         return (
             <div className="">
+
+                <h3>Register Admins</h3>
+
                 <form className="" onSubmit={this.handleSubmit}>
 
                     <div className="">
@@ -91,10 +112,16 @@ class Admins extends Component {
                     </div>
 
                     <div className="">
-                        <button className=""> Register Admin </button>
+                        <Button color="info" size="sm" >Register</Button>
                     </div>
                 </form>
+
+                <h3>Remove Admins</h3>
+
+                <AdminViewDelete />
+
             </div>
+
         )
     }
 }

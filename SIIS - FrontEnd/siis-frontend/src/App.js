@@ -4,8 +4,7 @@ import LoginRegister from './components/general_components/Login-Register-Root';
 import AdminHome from './components/admin_components/Home-Root';
 import InstructorHome from './components/instructor_components/Home-Root';
 import StudentHome from './components/student_components/Home-Root';
-import AboutUs from './components/general_components/AboutUs';
-import ProtectedRoute from './protected_route';
+import ProtectedRoute from './middleware/protected_route';
 import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import Alert from './components/general_components/Alerts';
@@ -29,7 +28,6 @@ function App() {
             <ProtectedRoute exact path="/AdminHome" component={AdminHome}/>
             <ProtectedRoute exact path="/InstructorHome" component={InstructorHome}/>
             <ProtectedRoute exact path="/StudentHome" component={StudentHome}/>
-            <ProtectedRoute exact path="/Home/AboutUs" component={AboutUs}/>
             <Route path="*" component={() => "404 Not Found"}/>
           </Switch>         
         </div> 

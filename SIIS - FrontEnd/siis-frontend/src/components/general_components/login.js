@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import '../../App.css';
-import Auth from '../../auth';
+import Auth from '../../middleware/auth';
 import {withAlert} from 'react-alert';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';

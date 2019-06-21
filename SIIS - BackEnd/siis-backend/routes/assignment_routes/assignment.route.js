@@ -1,6 +1,6 @@
 const express = require('express');
 const authMiddleware = require('../../middleware/auth');
-const {Assignment, ValidateAssignment} = require('../../models/instructor_models/assignment');
+const {Assignment, ValidateAssignment} = require('../../models/assignment_models/assignment');
 const router = express.Router();
 
 router.get('/', async (req, res) => {

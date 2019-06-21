@@ -1,6 +1,6 @@
 const express = require('express');
 const authMiddleware = require('../../middleware/auth');
-const {Exam, ValidateExam} = require('../../models/instructor_models/exam');
+const {Exam, ValidateExam} = require('../../models/exam_models/exam');
 const router = express.Router();
 
 router.get('/', async (req, res) => {

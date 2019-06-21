@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import {withAlert} from 'react-alert';
+import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { withAlert } from "react-alert";
+import MainComp from "./MainComp";
 
-class HomeRoot extends Component{
- 
-  render(){
+class HomeRoot extends Component {
+  render() {
     return (
-      <BrowserRouter>
-
-        <div>
-          Student Home Melan
-        </div>
-      </BrowserRouter>
-      
+      <div className="container">
+        <MainComp />
+      </div>
     );
   }
 }

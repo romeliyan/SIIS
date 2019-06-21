@@ -3,6 +3,7 @@ const config = require('config');
 const auth = require('./routes/general_routes/auth');
 const examRoutes = require('./routes/exam_routes/exam.route');
 const assignmentRoutes = require('./routes/assignment_routes/assignment.route');
+const courseRoutes = require('./routes/course_routes/course.route');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -34,6 +35,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', auth);
 app.use('/api/exams', examRoutes);
 app.use('/api/assignments', assignmentRoutes);
+app.use('/api/courses', courseRoutes);
 
 
 

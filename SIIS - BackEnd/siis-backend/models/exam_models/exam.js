@@ -11,6 +11,7 @@ const ExamSchema = new Schema({
         maxLength: 255,
         unique: true
     },
+
     instructions:{
         type:String,
         required: true,
@@ -43,5 +44,5 @@ function validateExam(exam){
     return Joi.validate(exam, examValidateSchema);
 }
 
-module.exports.Exam = Exam;
+module.exports.Exam = Exam
 module.exports.ValidateExam = validateExam;

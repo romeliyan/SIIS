@@ -1,18 +1,33 @@
-import React, {Component} from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import {withAlert} from 'react-alert';
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import ProtectedRoute from '../../middleware/protected_route';
+import NavBar from './NavBar';
+import { withAlert } from 'react-alert';
+import Courses from './Courses';
+import Admins from './Admins';
+import Instructors from './Instructors';
 
-class HomeRoot extends Component{
- 
-  render(){
+class HomeRoot extends Component {
+
+  handleLogout = () => {
+    this.props.history.push('/');
+  }
+
+  render() {
     return (
       <BrowserRouter>
 
-        <div>
-          Admin Home Romesh
+        <div className="AdminHome">
+          <NavBar handleLogout={this.handleLogout} />
+
+          <ProtectedRoute exact path="/AdminHome/" component={Admins} />
+          <ProtectedRoute exact path="/AdminHome/Instructors" component={Instructors} />
+          <ProtectedRoute exact path="/AdminHome/Courses" component={Courses} />
+
         </div>
+
       </BrowserRouter>
-      
+
     );
   }
 }

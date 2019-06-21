@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
 import axios from "axios";
-class ViewCourses extends Component {
+class EnrolledCourses extends Component {
   state = {
-    courseList: [
+    studentCourseList: [],
+    fetchedCoursesList: [
       {
         courseName: "fadfs",
         courseID: "2105",
@@ -24,43 +24,25 @@ class ViewCourses extends Component {
         courseID: "2105",
         courseYear: "25"
       }
-    ],
-    selectedCourse: {}
+    ]
   };
 
-  //   componentWillMount() {
-  //     axios
-  //       .get("http://localhost:4001/api/courses")
-  //       .then(res => {
-  //         this.setState({
-  //           traindata: res.data
-  //         });
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  enrollToCourse = e => {
-    this.setState(
-      {
-        selectedCourse: e
-      },
-      function() {
-        console.log("SELECTED -> " + this.state.selectedCourse.courseName);
-      }
-    );
-  };
-
-  itmDetails = input => {
-    this.props.priceSetState(input.Price);
-  };
+  componentWillMount() {
+    const courseID = this.state.studentCourseList[0];
+    axios
+      .get("/api/courses/" + courseID)
+      .then(res => console.log(res))
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+  }
 
   render() {
     return (
       <div>
         <ul>
-          {this.state.courseList.map(item => {
+          {this.state.fetchedCoursesList.map(item => {
             return (
               <div className="container">
                 <div className="panel panel-default">
@@ -77,18 +59,6 @@ class ViewCourses extends Component {
                       Enrollment Key :{" "}
                       {JSON.stringify(item.courseEnrollmentKey)}
                     </h5>
-
-                    <div style={{ float: "right" }}>
-                      <a href="/enroll/validate">
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          onClick={() => this.enrollToCourse(item)}
-                        >
-                          Enroll to Course
-                        </button>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -100,4 +70,4 @@ class ViewCourses extends Component {
   }
 }
 
-export default ViewCourses;
+export default EnrolledCourses;

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-
-import ViewCourses from "./ViewCourses.stud";
-import ConfirmationCode from "./confirmEnrollment";
 import StudentNavBar from "./studentNavBar";
+import ViewCourses from "./ViewCourses.stud";
 import EnrolledCourses from "./enrolledCourses";
-import StudentMainUI from "./studentMainUI.comp";
-import StudentProfile from "./studentProfile.comp";
 
 class MainComp extends Component {
   render() {
@@ -14,10 +10,10 @@ class MainComp extends Component {
       <BrowserRouter>
         <StudentNavBar />
         <Route exact path="/enroll" component={ViewCourses} />
-        <Route exact path="/" component={StudentMainUI} />
-        <Route exact path="/enroll/validate" component={ConfirmationCode} />
+        <Route exact path="/" />
+        <Route exact path="/enroll/validate" />
         <Route exact path="/mycourses" component={EnrolledCourses} />
-        <Route exact path="/dashboard" component={StudentProfile} />
+        <Route exact path="/dashboard" />
       </BrowserRouter>
     );
   }

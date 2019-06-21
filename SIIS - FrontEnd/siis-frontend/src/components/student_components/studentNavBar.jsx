@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class StudentNavBar extends Component {
   state = {};
@@ -13,17 +14,20 @@ class StudentNavBar extends Component {
               </a>
             </div>
             <ul className="nav navbar-nav">
-              <li className="active">
-                <a href="/dashboard">My Account</a>
+              <li className="acenrollCoursetive">
+                <NavLink exact to="/StudentHome/enroll">
+                  Enroll to Courses
+                </NavLink>
               </li>
-              <li>
-                <a href="/enroll">Enroll to Course</a>
+              <li className="acenrollCoursetive">
+                <NavLink exact to="/StudentHome/enrolledCourses">
+                  My Courses
+                </NavLink>
               </li>
-              <li>
-                <a href="/mycourses">My Courses</a>
-              </li>
-              <li>
-                <a href="#">sign out</a>
+              <li className="acenrollCoursetive">
+                <NavLink exact to="/StudentHome/profile">
+                  Dashboard
+                </NavLink>
               </li>
             </ul>
           </div>

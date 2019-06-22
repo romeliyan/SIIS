@@ -51,7 +51,7 @@ class Instructors extends Component {
 
                 axios.post('http://localhost:3000/api/auth/user/', user).then(res => {
                     this.props.alert.success('Registration Successful');
-                    this.props.history.push('AdminHome/Instructors/');
+                    this.props.history.push('Instructors/');
                 }).catch(err => {
                     this.props.alert.error(err.response.data);
                 });

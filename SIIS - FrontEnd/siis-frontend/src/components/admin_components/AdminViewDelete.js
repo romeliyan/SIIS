@@ -45,6 +45,13 @@ class AdminViewDelete extends Component {
         });
     }
 
+    getAdmins = (inputEmail) => {
+        const selectedAdmin = this.state.admins.find(x => x.email === inputEmail);
+        console.log(selectedAdmin);
+
+        this.props.getSelectedAdmins(selectedAdmin);
+    }
+
     componentDidMount() {
         axios.get('http://localhost:3000/api/admin').then(
             res => {
@@ -72,7 +79,11 @@ class AdminViewDelete extends Component {
 
                         <td>
 
-                            <Button color="danger" size="sm" onClick={this.deleteAdmin.bind(this, admin._id)}>Delete</Button>
+                            <Button style={{ backgroundColor: "red" }} size="sm" onClick={this.deleteAdmin.bind(this, admin._id)}>Delete</Button>
+
+                        </td>
+                        <td>
+                            <Button color="danger" size="sm" onClick={() => { this.getAdmins(admin.email) }}>Select</Button>
                         </td>
                     </tr>
                 )

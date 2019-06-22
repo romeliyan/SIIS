@@ -12,7 +12,12 @@ const studentSchema = new Schema({
   mobileNumber: String,
   username: String,
   course: [String],
-  password: String
+  password: String,
+  createdAt: {
+    type: Date,
+    // `Date.now()` returns the current unix timestamp as a number
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("students", studentSchema);

@@ -8,7 +8,9 @@ class StudentProfile extends Component {
       username: "",
       firstname: "",
       lastname: "",
-      email: ""
+      email: "",
+      nic: "",
+      createdAt: ""
     };
   }
 
@@ -21,9 +23,11 @@ class StudentProfile extends Component {
         this.setState(
           {
             firstname: resp.data.firstName,
-            lastname: resp.data.lastname,
+            lastname: resp.data.lastName,
             email: resp.data.email,
-            username: resp.data.username
+            username: resp.data.username,
+            nic: resp.data.nic,
+            createdAt: resp.data.createdAt
           },
           function() {
             console.log(this.state.data);
@@ -38,7 +42,7 @@ class StudentProfile extends Component {
           <div className="panel panel-default">
             <div className="panel-heading">
               {" "}
-              <h4>User Profile</h4>
+              <h4>Student Profile</h4>
             </div>
             <div className="panel-body">
               <div className="col-md-4 col-xs-12 col-sm-6 col-lg-4">
@@ -51,21 +55,21 @@ class StudentProfile extends Component {
               </div>
               <div className="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                 <div className="container">
-                  <h2>John Doe</h2>
+                  <h2>{this.state.firstname + "" + this.state.lastname}</h2>
                   <p>
-                    an <b> Employee</b>
+                    <b> @{" " + this.state.username}</b>
                   </p>
                 </div>
                 <hr />
                 <ul className="container details">
                   <li>
-                    <p>
+                    <h5>
                       <span
                         className="glyphicon glyphicon-user one"
                         style={{ width: 50 }}
                       />
-                      i.rudberg
-                    </p>
+                      {this.state.nic}
+                    </h5>
                   </li>
                   <li>
                     <p>

@@ -18,7 +18,13 @@ class auth{
     }
 
     getDecodedToken(){
-        return this.token;
+        const token = jwtDecode(localStorage.getItem('token'));
+        this.token = token
+        return jwtDecode(token);
+    }
+
+    getToken(){
+        return localStorage.getItem('token');
     }
 
     isAuthenticated(){

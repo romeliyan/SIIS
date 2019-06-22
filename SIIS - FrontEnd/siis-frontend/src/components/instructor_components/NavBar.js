@@ -9,7 +9,7 @@ class NavBar extends Component{
 
     render(){
         return(
-            <nav className="nav-wrapper blue darken-3">
+            <nav className="nav-wrapper blue darken-4">
                 <div className="container">
                     <NavLink exact to="/InstructorHome/" className="brand-logo">SIIS-Instructor</NavLink>
                     <ul className="right">

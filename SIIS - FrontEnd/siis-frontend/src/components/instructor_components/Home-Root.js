@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Course from './Courses';
 import Exam from './Exams';
 import Assignment from './Assignments';
+import ViewCourse from './ViewCourse';
 
 import {withAlert} from 'react-alert';
 
@@ -22,9 +23,11 @@ class HomeRoot extends Component{
         <div className="InstructorHome">
           <NavBar handleLogout={this.handleLogout}/>
           
-          <ProtectedRoute  exact path="/InstructorHome/" component={Course} />
-          <ProtectedRoute  exact path="/InstructorHome/Exams" component={Exam}/>
-          <ProtectedRoute  exact path="/InstructorHome/Assignments" component={Assignment}/>
+          <ProtectedRoute exact path="/InstructorHome/" component={Course} />
+          <ProtectedRoute exact path="/InstructorHome/Exams" component={Exam}/>
+          <ProtectedRoute exact path="/InstructorHome/Assignments" component={Assignment}/>
+          <ProtectedRoute exact path="/InstructorHome/ViewCourse" component={ViewCourse}/>
+          
           
         </div>
         

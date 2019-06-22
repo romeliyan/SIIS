@@ -9,33 +9,31 @@ import {NavLink} from 'react-router-dom';
 class Course extends Component{
 
     state = {
-        courseList: []
+        courseList: [],
     };
 
     componentWillMount() {
 
         const token = jwtDecode(auth.getToken());
-        console.log(token);
 
         //Get the logged in instructor object
         axios.get('http://localhost:3000/api/instructor?email=' + token.email).then(res => {
-            const instructor = res.data;
-            console.log(instructor);
 
+            console.log( res.data[0].firstName + ' ' + res.data[0].lastName);
+            
+            axios.get('http://localhost:3000/api/courses?lecturer=' + res.data[0].firstName + ' ' + res.data[0].lastName).then(res => {             
+                    
+                    this.setState({
+                        courseList: res.data
+                    })
+                }).catch(err => {
+                    console.log(err);
+                })
         }).catch(err => {
             console.log(err);
         })
 
-        axios
-          .get("http://localhost:3000/api/courses")
-          .then(res => {
-            this.setState({
-                courseList: res.data
-            })
-          })
-          .catch(err => {
-            console.log(err);
-          });
+       
     }
 
     handleClick = () => {
@@ -75,7 +73,9 @@ class Course extends Component{
                             )
                         })
                     ) : (
-                        <div> No Courses Found </div>
+                        <div> No Courses Found 
+                            <button onClick={this.handleClick}> Click</button>
+                        </div>
                     )
                 }
             </ul>

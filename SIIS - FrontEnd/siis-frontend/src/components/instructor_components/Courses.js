@@ -80,7 +80,6 @@ class Course extends Component{
                         })
                     ) : (
                         <div> No Courses Found 
-                            <button onClick={this.handleClick}> Click</button>
                         </div>
                     )
                 }

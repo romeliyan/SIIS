@@ -1,7 +1,30 @@
 import React, {Component} from 'react';
 import {withAlert} from 'react-alert';
+import axios from 'axios';
 
 class ViewCourse extends Component{
+
+  state = {
+    examList: [],
+    assignmentList: []
+  }
+
+  componentDidMount = () => {
+
+    axios.get('http://localhost:3000/api/exams?courseName=' + this.props.selectedCourseName).then(res => {
+      console.log(res.data);
+      this.setState({
+        examList: res.data
+      })
+    })
+
+    axios.get('http://localhost:3000/api/assignments?courseName=' + this.props.selectedCourseName).then(res => {
+      console.log(res.data);
+      this.setState({
+        assignmentList: res.data
+      })
+    })
+  }
 
   render(){
     return (
@@ -17,8 +40,37 @@ class ViewCourse extends Component{
                   </div>
 
                   <div className="panel-body">
-                    We are a leading non-state degree awarding institute
-                    approved by the University Grants Commission (UGC) under the
+                    
+                  <ul>
+                      {
+                          this.state.examList.length ? (
+                              this.state.examList.map(exam => {
+                                  return(
+                                      <div className="container-fluid"  key={exam.name}>
+                                          <div className="panel panel-default">
+                                              <div className="panel-heading">
+                                                <h6> {exam.name} </h6>
+                                              </div>
+                      
+                                              <div className="panel-body">
+                                                  <p>Examination Name : {exam.name}</p>
+                                                  <p>Examination Date : {exam.date}</p>
+                                                  <p>Allocated Marks : {exam.marks}</p>
+                                                  <p>Allocalted Hall : {exam.examinationHall}</p>
+                                               
+                                              </div>
+                      
+                                          </div>
+                                      </div>
+                                  )
+                              })
+                          ) : (
+                              <div> No Examinations Found 
+                                  
+                              </div>
+                          )
+                      }
+                  </ul>
  
                   </div>
 
@@ -32,8 +84,35 @@ class ViewCourse extends Component{
                   </div>
 
                   <div className="panel-body">
-                    We are a leading non-state degree awarding institute
-                    approved by the University Grants Commission (UGC) under the
+                    <ul>
+                        {
+                            this.state.assignmentList.length ? (
+                                this.state.assignmentList.map(assignment => {
+                                    return(
+                                        <div className="container-fluid"  key={assignment.name}>
+                                            <div className="panel panel-default">
+                                                <div className="panel-heading">
+                                                  <h6> {assignment.name} </h6>
+                                                </div>
+                        
+                                                <div className="panel-body">
+                                                    <p>Assignment Name : {assignment.name}</p>
+                                                    <p>Assignment Due Date : {assignment.dueDate}</p>
+                                                    <p>Assignment Marks : {assignment.marks}</p>
+
+                                                </div>
+                        
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <div> No Examinations Found 
+                                    
+                                </div>
+                            )
+                        }
+                    </ul>
  
                   </div>
 

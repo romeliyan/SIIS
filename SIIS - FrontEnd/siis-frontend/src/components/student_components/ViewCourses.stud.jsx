@@ -20,6 +20,8 @@ class ViewCourses extends Component {
   //   console.log("-->" + token);
   // }
   componentDidMount() {
+    console.log("KEY -------->" + localStorage.getItem("u_id"));
+
     axios
       .get("http://localhost:3000/api/courses")
       .then(res => {

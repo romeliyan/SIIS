@@ -28,6 +28,12 @@ class StudentNavBar extends Component {
                 <NavLink exact to="/StudentHome/profile">
                   Dashboard
                 </NavLink>
+                
+              </li>
+              <li className="acenrollCoursetive">
+                <NavLink exact to="/StudentHome/user/exams">
+                  My Exams
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -16,6 +16,9 @@ class auth{
         localStorage.clear();
         callback();
     }
+    getToken() {
+        return localStorage.getItem('token');
+    }
 
     getDecodedToken(){
         return this.token;

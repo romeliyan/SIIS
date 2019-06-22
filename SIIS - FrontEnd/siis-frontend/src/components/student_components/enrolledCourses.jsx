@@ -3,24 +3,35 @@ import axios from "axios";
 
 class EnrolledToCourses extends Component {
   state = {
-    studentCourseList: [],
-    fetchedCoursesList: []
+    loggedStudentID: localStorage.getItem("u_id"),
+    courseList: []
   };
 
   componentDidMount() {
-    axios.get("http://localhost:3000/api/courses").then(res => {
-      this.setState((this.state.courses = res.data));
-      console.log(this.state.courses);
-    });
+    axios
+      .get(
+        "http://localhost:3000/api/student/" + this.state.loggedStudentID + ""
+      )
+      .then(res => {
+        this.setState(
+          {
+            courseList: res.data.course
+          },
+          function() {
+            console.log(this.state.courseList);
+          }
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
-
-  
 
   render() {
     return (
       <div>
         <ul>
-          {this.state.fetchedCoursesList.map(item => {
+          {this.state.courseList.map(item => {
             return (
               <div className="container">
                 <div className="panel panel-default">

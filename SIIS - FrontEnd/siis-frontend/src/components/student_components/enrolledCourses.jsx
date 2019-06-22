@@ -3,51 +3,59 @@ import axios from "axios";
 
 class EnrolledToCourses extends Component {
   state = {
-    loggedStudentID: localStorage.getItem("u_id"),
-    courseList: []
+    studentID: localStorage.getItem("UUID"),
+    infoPayLoad: []
   };
+
+  //STEPS
+  //----------> fetch course ids for given UUID
+  //----------> access courselist by computed course ids
+  //---------->render to user
 
   componentDidMount() {
     axios
       .get(
-        "http://localhost:3000/api/student/" + this.state.loggedStudentID + ""
+        "http://localhost:3000/api/student/enrolled/" +
+          localStorage.getItem("UUID")
       )
-      .then(res => {
+      .then(response => {
         this.setState(
           {
-            courseList: res.data.course
+            infoPayLoad: response.data
           },
           function() {
-            console.log(this.state.courseList);
+            console.log(this.state.infoPayLoad);
           }
         );
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   }
+
+  onPlay = () => {
+    alert("Clickked");
+  };
 
   render() {
     return (
       <div>
+        <h1>{this.state.courseIDList}</h1>
         <ul>
-          {this.state.courseList.map(item => {
+          {this.state.infoPayLoad.map(item => {
             return (
               <div className="container">
-                <div className="panel panel-default">
+                <div
+                  className="panel panel-default"
+                  onClick={() => this.onPlay()}
+                >
                   <div className="panel-heading ">
                     {JSON.stringify(item.courseName)}
                   </div>
 
                   <div className="panel-body">
-                    <h5>Course Name : {item.courseName}</h5>
-                    <h5>CourseID : {item.courseID}</h5>
-                    <h5>Year : {item.courseYear}</h5>
-                    <h5>Semester : {item.courseSemester}</h5>
-                    <h5>
-                      Enrollment Key :{" "}
-                      {JSON.stringify(item.courseEnrollmentKey)}
-                    </h5>
+                    <h5>Course Name : {item.name}</h5>
+                    <h5>Lecturer : {item.lecture}</h5>
+                    <h5>Course Code : {item.code}</h5>
+                    <h5>Enroll Key : {item.enrollKey}</h5>
                   </div>
                 </div>
               </div>

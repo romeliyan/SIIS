@@ -12,6 +12,10 @@ class ViewCourses extends Component {
 
   enrollToCourse = e => {
     localStorage.setItem("key", e.enrollKey);
+    localStorage.setItem("course_id", e._id);
+    localStorage.setItem("name",e.name);
+    localStorage.setItem("lecture",e.lecture);
+    localStorage.setItem("code",e.code);
     this.props.history.push("/StudentHome/enrollme");
   };
 

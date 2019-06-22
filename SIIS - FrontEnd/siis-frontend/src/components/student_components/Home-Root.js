@@ -68,7 +68,7 @@ class HomeRoot extends Component {
         />
         <ProtectedRoute
           exact
-          path="/StudentHome/enrolledToCourses"
+          path="/StudentHome/mycourses"
           component={EnrolledCourses}
         />
         <ProtectedRoute exact path="/StudentHome/user/exams" component={Exam} />

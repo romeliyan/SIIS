@@ -7,10 +7,35 @@ class ConfirmationCode extends Component {
   }
 
   OnClickVerifyKey = () => {
-    console.log(localStorage.getItem("key"));
+    console.log("------KEY--------" + localStorage.getItem("key"));
+    console.log(
+      "----------COURSE ID--------" + localStorage.getItem("course_id")
+    );
+    console.log("----------UUID--------" + localStorage.getItem("UUID"));
+
+    console.log("----------Name--------" + localStorage.getItem("name"));
+
+    console.log("----------Lecture--------" + localStorage.getItem("lecture"));
+
+    console.log("----------Code--------" + localStorage.getItem("code"));
     let userInputKey = document.getElementById("confirmkey").value;
 
     if (userInputKey == localStorage.getItem("key")) {
+      //creating payload
+      const formPayload = {
+        courseID: localStorage.getItem("course_id"),
+        studentID: localStorage.getItem("UUID"),
+        name: localStorage.getItem("name"),
+        lecture: localStorage.getItem("lecture"),
+        code: localStorage.getItem("code")
+      };
+
+      axios
+        .post("http://localhost:3000/api/student//enrolled", formPayload)
+        .then(function(response) {
+          console.log("Added To Course --> " + response.data);
+        });
+      this.props.history.push("/StudentHome/");
       alert("Success ...");
       this.props.history.push("/StudentHome/");
     } else {

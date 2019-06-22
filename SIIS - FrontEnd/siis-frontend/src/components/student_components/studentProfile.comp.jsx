@@ -57,33 +57,33 @@ class StudentProfile extends Component {
                 <div className="container">
                   <h2>{this.state.firstname + "" + this.state.lastname}</h2>
                   <p>
-                    <b> @{" " + this.state.username}</b>
+                    <h4> @{" " + this.state.username}</h4>
                   </p>
                 </div>
                 <hr />
                 <ul className="container details">
                   <li>
-                    <h5>
+                    <h4>
                       <span
                         className="glyphicon glyphicon-user one"
                         style={{ width: 50 }}
                       />
                       {this.state.nic}
-                    </h5>
+                    </h4>
                   </li>
                   <li>
-                    <p>
+                    <h4>
                       <span
                         className="glyphicon glyphicon-envelope one"
                         style={{ width: 50 }}
                       />
-                      somerandom@email.com
-                    </p>
+                      {this.state.email}
+                    </h4>
                   </li>
                 </ul>
                 <hr />
                 <div className="col-sm-5 col-xs-6 tital ">
-                  Date Of Joining: 15 Jun 2016
+                  Date of Joining : {this.state.createdAt}
                 </div>
               </div>
             </div>

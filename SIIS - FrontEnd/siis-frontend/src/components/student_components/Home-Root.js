@@ -26,6 +26,10 @@ class HomeRoot extends Component {
   }
 
   componentDidMount() {
+    this.interval = setInterval(
+      () => this.setState({ time: Date.now() }),
+      1000
+    );
     //GEN TOCKEN
     const token = jwtToken(auth.getToken());
     //console.log(token);

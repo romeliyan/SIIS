@@ -27,11 +27,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={LoginRegister} />
             <Route exact path="/SignUp" component={LoginRegister} />
-            <ProtectedRoute exact path="/AdminHome" component={AdminHome} />
+            <ProtectedRoute path="/AdminHome" component={AdminHome} />
             <ProtectedRoute exact path="/InstructorHome" component={InstructorHome} />
             <ProtectedRoute exact path="/StudentHome" component={StudentHome} />
-            <ProtectedRoute exact path="/AdminHome/Instructors" component={Instructor} />
-            <ProtectedRoute exact path="/AdminHome/Courses" component={Courses} />
+            <ProtectedRoute path="/AdminHome/Instructors" component={Instructor} />
+            <ProtectedRoute path="/AdminHome/Courses" component={Courses} />
             <Route path="*" component={() => "404 Not Found"} />
           </Switch>
         </div>

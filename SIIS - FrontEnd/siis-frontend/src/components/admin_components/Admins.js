@@ -14,6 +14,8 @@ class Admins extends Component {
         mobileNumber: null,
         password1: null,
         password2: null,
+        adminIDs: "",
+
     }
 
     handleChange = (e) => {
@@ -29,17 +31,36 @@ class Admins extends Component {
             lastName: admin.lastName,
             email: admin.email,
             nic: admin.nic,
-            mobileNumber: admin.mobileNumber
-
+            mobileNumber: admin.mobileNumber,
+            adminIDs: admin._id
         })
     }
+
+
 
     clickclick = () => {
         console.log(this.state.selectedAdmin);
     }
 
-    handleUpdate = () => {
+    handleUpdate = (e) => {
+        e.preventDefault();
 
+        const admin = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            nic: this.state.nic,
+            mobileNumber: this.state.mobileNumber,
+            password: this.state.password1
+        }
+
+        console.log(this.state.adminID);
+
+        axios.put('http://localhost:3000/api/admin/' + this.state.adminIDs, admin).then(res => {
+            this.props.alert.success('Admin Updated Successfully');
+        }).catch(err => {
+            this.props.alert.error(err.response.data);
+        })
     }
 
     handleSubmit = (e) => {

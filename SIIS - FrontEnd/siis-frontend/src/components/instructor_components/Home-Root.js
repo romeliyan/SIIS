@@ -6,6 +6,7 @@ import Course from './Courses';
 import Exam from './Exams';
 import Assignment from './Assignments';
 import ViewCourse from './ViewCourse';
+import MyAccount from './MyAccount';
 
 import {withAlert} from 'react-alert';
 
@@ -27,6 +28,7 @@ class HomeRoot extends Component{
           <ProtectedRoute exact path="/InstructorHome/Exams" component={Exam}/>
           <ProtectedRoute exact path="/InstructorHome/Assignments" component={Assignment}/>
           <ProtectedRoute exact path="/InstructorHome/ViewCourse" component={ViewCourse}/>
+          <ProtectedRoute exact path="/InstructorHome/MyAccount" component={MyAccount}/>
           
           
         </div>

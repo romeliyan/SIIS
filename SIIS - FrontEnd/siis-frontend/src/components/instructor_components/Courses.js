@@ -14,10 +14,17 @@ class Course extends Component{
 
     componentWillMount() {
 
-        console.log(auth.isAuthenticated());
-        console.log(auth.getToken());
-        console.log(jwtDecode(auth.getToken()));
+        const token = jwtDecode(auth.getToken());
+        console.log(token);
 
+        //Get the logged in instructor object
+        axios.get('http://localhost:3000/api/instructor?email=' + token.email).then(res => {
+            const instructor = res.data;
+            console.log(instructor);
+
+        }).catch(err => {
+            console.log(err);
+        })
 
         axios
           .get("http://localhost:3000/api/courses")

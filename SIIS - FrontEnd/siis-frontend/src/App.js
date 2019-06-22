@@ -11,6 +11,7 @@ import Alert from './components/general_components/Alerts';
 import Exam from './components/instructor_components/Exams';
 import Assignment from './components/instructor_components/Assignments';
 import ViewCourse from './components/instructor_components/ViewCourse'
+import MyAccount from './components/instructor_components/MyAccount';
 import 'core-js';
 
 const alertOptions = {
@@ -34,6 +35,7 @@ function App() {
             <ProtectedRoute path="/InstructorHome/Exams" component={Exam}/>
             <ProtectedRoute path="/InstructorHome/Assignments" component={Assignment}/>
             <ProtectedRoute path="/InstructorHome/ViewCourse" component={ViewCourse}/>
+            <ProtectedRoute path="/InstructorHome/MyAccount" component={MyAccount}/>
             <Route path="*" component={() => "404 Not Found"}/>
           </Switch>         
         </div> 

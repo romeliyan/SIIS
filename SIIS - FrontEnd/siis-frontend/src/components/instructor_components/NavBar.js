@@ -15,6 +15,7 @@ class NavBar extends Component{
                     <ul className="right">
                         <li> <NavLink exact to='/InstructorHome/Exams'>Exams</NavLink></li>
                         <li> <NavLink exact to='/InstructorHome/Assignments'>Assignments</NavLink></li>
+                        <li> <NavLink exact to='/InstructorHome/MyAccount'>My Account</NavLink></li>
                         <li> <NavLink exact to='/' onClick={this.handleLogout}>Logout</NavLink></li>
                                    
                     </ul>

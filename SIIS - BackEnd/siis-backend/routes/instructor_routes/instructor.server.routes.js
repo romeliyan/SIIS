@@ -10,6 +10,11 @@ router.get('/', async (req, res) => {
         const instructors = await Instructor.find().sort('firstName');
         res.send(instructors);
     }
+    else if(Object.keys(req.query).length === 1 && Object.keys(req.query)[0] === 'email'){
+        console.log('Query parameters set:{email}');
+        const instructor = await Instructor.find({email: req.query.email});
+        res.send(instructor);
+    }
     else {
         console.log('400 - Bad Request');
         return res.status(400).send('Invalid query parameters. {firstName}');

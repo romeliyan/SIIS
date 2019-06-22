@@ -40,6 +40,12 @@ class Course extends Component{
         console.log(this.state.courseList);
     }
 
+    handleViewCourse = (courseName, courseID) => {
+
+        this.props.getSelectedCourse(courseName, courseID);
+        this.props.history.push('/InstructorHome/ViewCourse');
+    }
+
 
     render() {
         return (
@@ -64,7 +70,7 @@ class Course extends Component{
                                             <p>Enrollment Key : {course.enrollKey}</p>
 
                                             <div style={{float: "right"}}>
-                                                <NavLink> <button style={{backgroundColor: "RoyalBlue"}} type="button" className="btn btn-primary" onClick={this.handleViewCourse}>View Course Details</button></NavLink>
+                                                <NavLink exact to="/InstructorHome/ViewCourse"> <button style={{backgroundColor: "RoyalBlue"}} type="button" className="btn btn-primary" onClick={() => {this.handleViewCourse(course.name, course._id)}}>View Course Details</button></NavLink>
                                             </div>
                                         </div>
                 

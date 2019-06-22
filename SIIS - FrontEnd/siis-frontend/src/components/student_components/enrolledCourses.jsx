@@ -31,8 +31,11 @@ class EnrolledToCourses extends Component {
       .catch(err => console.log(err));
   }
 
-  onPlay = () => {
+  onPlay = item => {
     alert("Clickked");
+    localStorage.setItem("clickedCourse", item.courseID);
+    console.log("C ---- > " + localStorage.getItem("clickedCourse"));
+    this.props.history.push('/StudentHome/courses/assignments')
   };
 
   render() {
@@ -45,7 +48,7 @@ class EnrolledToCourses extends Component {
               <div className="container">
                 <div
                   className="panel panel-default"
-                  onClick={() => this.onPlay()}
+                  onClick={() => this.onPlay(item)}
                 >
                   <div className="panel-heading ">
                     {JSON.stringify(item.courseName)}

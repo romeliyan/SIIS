@@ -13,6 +13,7 @@ import ConfirmationCode from "./confirmEnrollment";
 import StudentExams from "./studentsExams";
 import Exam from "./studentsExams";
 import axios from "axios";
+import AssignmentList from "./AssignmentList";
 class HomeRoot extends Component {
   state = {
     enrollmentKEY: "",
@@ -74,6 +75,12 @@ class HomeRoot extends Component {
           exact
           path="/StudentHome/mycourses"
           component={EnrolledCourses}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/StudentHome/courses/assignments"
+          component={AssignmentList}
         />
         <ProtectedRoute exact path="/StudentHome/user/exams" component={Exam} />
       </BrowserRouter>

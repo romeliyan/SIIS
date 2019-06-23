@@ -773,6 +773,7 @@ td{
 
 .ih3{
  color: #225E62;
+ font-size: 30px;
 }
 
 .form1{
@@ -782,13 +783,13 @@ td{
 
 .f0{
   padding-top: 1cm;
-  padding-left: 7cm;
-  padding-right: 7cm;
+  padding-left: 6cm;
+  padding-right: 19cm;
 }
 
 .f1{
-  padding-left: 7cm;
-  padding-right: 7cm;
+  padding-left: 6cm;
+  padding-right: 19cm;
   font-size: 12px;
 }
 
@@ -797,6 +798,90 @@ td{
   color: black;
 }
 
+.l5{
+  font-size: 16px;
+  color: rgb(17, 153, 17);
+}
+
 .ff{
+  padding-left: 5cm;
+  padding-right: 5cm;
+}
+
+.qqq{
+}
+
+.ff3{
   padding-left: 3cm;
+  padding-right: 15cm;
+  float: left;
+}
+
+
+.ff4{
+ 
+  float: right;
+  padding-right: 3cm;
+  margin-top: -10cm;
+}
+
+.ff41{
+ 
+  float: right;
+  padding-right: 3cm;
+  margin-top: -15cm;
+}
+
+.b1{
+  margin-top: 0.5cm;
+}
+
+.pic3{
+  padding-right: 2cm;
+ float: right;
+ padding-bottom: 1cm;
+ height: 18cm;
+ width: 18cm;
+}
+
+.pic2{
+  padding-right: 3cm;
+ float: right;
+ height: 17cm;
+ width: 19cm;
+}
+
+.backgg{
+  height: 15cm;
+  margin: 1cm;
+}
+
+
+.backpic{
+  height: 25cm;
+  width: 48cm;
+}
+
+.but10{
+  background-color: #2E4158;
+  margin-top: -45cm;
+  margin-left: 15cm;
+  height: 2cm;
+  width: 6cm;
+}
+
+.but11{
+  background-color: green;
+  margin-top: -45cm;
+  margin-left: 1cm;
+  height: 2cm;
+  width: 6cm;
+}
+
+.but12{
+  background-color: orangered;
+  margin-top: -45cm;
+  margin-left: 1cm;
+  height: 2cm;
+  width: 6cm;
 }

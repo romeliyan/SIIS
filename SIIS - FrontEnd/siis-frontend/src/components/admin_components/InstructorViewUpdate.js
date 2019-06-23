@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Input, FormGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button } from 'reactstrap';
 
 
-class InstructorViewDelete extends Component {
+class InstructorViewUpdate extends Component {
     state = {
         instructors: [],
 
@@ -32,7 +32,7 @@ class InstructorViewDelete extends Component {
     }
 
     _refreshInstructors() {
-        axios.get('http://localhost:3000/api/instructor').then((response) => {
+        axios.get('http://localhost:3000/api/instructors').then((response) => {
             this.setState({
                 instructors: response.data
             })
@@ -43,6 +43,13 @@ class InstructorViewDelete extends Component {
         axios.delete('http://localhost:3000/api/instructor/' + name).then((response) => {
             this._refreshInstructors();
         });
+    }
+
+    getInstructors = (inputEmail) => {
+        const selectedInstructor = this.state.instructors.find(x => x.email === inputEmail);
+        console.log(selectedInstructor);
+
+        this.props.getSelectedInstructors(selectedInstructor);
     }
 
     componentDidMount() {
@@ -71,9 +78,9 @@ class InstructorViewDelete extends Component {
                         <td>{instructor.mobileNumber}</td>
 
                         <td>
-
-                            <Button style={{ backgroundColor: "red" }} size="sm" onClick={this.deleteInstructor.bind(this, instructor._id)}>Delete</Button>
+                            <Button color="danger" size="sm" onClick={() => { this.getInstructors(instructor.email) }}>Select</Button>
                         </td>
+
                     </tr>
                 )
             })
@@ -86,7 +93,7 @@ class InstructorViewDelete extends Component {
 
             <div>
 
-                <div className="ff">
+                <div className="ff3">
                     <Table>
                         <thead>
                             <tr>
@@ -113,4 +120,4 @@ class InstructorViewDelete extends Component {
     }
 }
 
-export default withAlert()(InstructorViewDelete);
+export default withAlert()(InstructorViewUpdate);

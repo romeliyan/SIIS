@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Input, FormGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button } from 'reactstrap';
 
 
-class AdminViewDelete extends Component {
+class AdminViewUpdate extends Component {
     state = {
         admins: [],
 
@@ -38,7 +38,6 @@ class AdminViewDelete extends Component {
             })
         });
     }
-
 
     deleteAdmin(name) {
         axios.delete('http://localhost:3000/api/admin/' + name).then((response) => {
@@ -79,9 +78,7 @@ class AdminViewDelete extends Component {
                         <td>{admin.mobileNumber}</td>
 
                         <td>
-
-                            <Button style={{ backgroundColor: "red" }} size="sm" onClick={this.deleteAdmin.bind(this, admin._id)}>Delete</Button>
-
+                            <Button color="danger" size="sm" onClick={() => { this.getAdmins(admin.email) }}>Select</Button>
                         </td>
 
                     </tr>
@@ -96,7 +93,7 @@ class AdminViewDelete extends Component {
 
             <div>
 
-                <div className="ff">
+                <div className="ff3">
                     <Table>
                         <thead>
                             <tr>
@@ -123,4 +120,4 @@ class AdminViewDelete extends Component {
     }
 }
 
-export default withAlert()(AdminViewDelete);
+export default withAlert()(AdminViewUpdate);

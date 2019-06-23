@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {withAlert} from 'react-alert';
 import axios from 'axios';
+import auth from '../../middleware/auth';
+import jwtDecode from 'jwt-decode';
 
 class Assignment extends Component{
 
@@ -25,16 +27,26 @@ class Assignment extends Component{
     }
 
     componentWillMount() {
-        axios
-          .get("http://localhost:3000/api/courses")
-          .then(res => {
-            this.setState({
-                courseList: res.data
-            })
-          })
-          .catch(err => {
+
+        const token = jwtDecode(auth.getToken());
+        
+        //Get the logged in instructor object
+        axios.get('http://localhost:3000/api/instructor?email=' + token.email).then(res => {
+
+            console.log( res.data[0].firstName + ' ' + res.data[0].lastName);
+            
+            axios.get('http://localhost:3000/api/courses?lecturer=' + res.data[0].firstName + ' ' + res.data[0].lastName).then(res => {             
+                    
+                    this.setState({
+                        courseList: res.data
+                    })
+                }).catch(err => {
+                    console.log(err);
+                })
+        }).catch(err => {
             console.log(err);
-          });
+        })
+
 
         axios.get('http://localhost:3000/api/assignments').then(res => {
             this.setState({

@@ -32,7 +32,13 @@ const AssignmentSchema = new Schema({
     courseName: {
         type:String,
         required: true
+    },
+
+    courseID: {
+        type:String,
+        required: true
     }
+
 });
 
 const Assignment = mongoose.model('Assignment', AssignmentSchema);
@@ -44,7 +50,8 @@ function validateAssignment(assignment){
         instructions: Joi.string().required(),
         dueDate: Joi.date().required(),
         marks: Joi.number().required(),
-        courseName: Joi.string().required()
+        courseName: Joi.string().required(),
+        courseID: Joi.string().required()
     };
 
     return Joi.validate(assignment, assignmentValidateSchema);

@@ -49,42 +49,134 @@ class Course extends Component{
 
     render() {
         return (
-          <div>
-            <br/>
-            <br/>
-            <ul>
-                {
-                    this.state.courseList.length ? (
-                        this.state.courseList.map(course => {
-                            return(
-                                <div className="container"  key={course.code}>
-                                    <div className="panel panel-default">
-                                        <div className="panel-heading">
-                                           <h5> {course.name} </h5>
-                                        </div>
-                
-                                        <div className="panel-body">
-                                            <p>Course Name : {course.name}</p>
-                                            <p>Course Code : {course.code}</p>
-                                            <p>Lecturer : {course.lecture}</p>
-                                            <p>Enrollment Key : {course.enrollKey}</p>
+            
+            <div className="container-fluid">
+                <br/> <br/>
+                <section className="main">
+                <section className="tab-content">
+                    <section className="tab-pane active fade in content" id="dashboard">
+                        <div className="col-xs-12 col-sm-9">
+                            <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h5>Currently Active Courses</h5>
+                            </div>
 
-                                            <div style={{float: "right"}}>
-                                                <NavLink exact to="/InstructorHome/ViewCourse"> <button style={{backgroundColor: "RoyalBlue"}} type="button" className="btn btn-primary" onClick={() => {this.handleViewCourse(course.name, course._id)}}>View Course Details</button></NavLink>
+                            <div className="panel-body">
+                            <div>
+                                
+                                <ul>
+                                    {
+                                        this.state.courseList.length ? (
+                                            this.state.courseList.map(course => {
+                                                return(
+                                                    <div className="container-fluid"  key={course.code}>
+                                                        <div className="panel panel-default">
+                                                            <div className="panel-heading">
+                                                            <h6> {course.name} </h6>
+                                                            </div>
+                                    
+                                                            <div className="panel-body">
+                                                                <p>Course Name : {course.name}</p>
+                                                                <p>Course Code : {course.code}</p>
+                                                                <p>Lecturer : {course.lecture}</p>
+                                                                <p>Enrollment Key : {course.enrollKey}</p>
+
+                                                                <div style={{float: "right"}}>
+                                                                    <NavLink exact to="/InstructorHome/ViewCourse"> <button style={{backgroundColor: "RoyalBlue"}} type="button" className="btn btn-primary" onClick={() => {this.handleViewCourse(course.name, course._id)}}>View Course Details</button></NavLink>
+                                                                </div>
+                                                            </div>
+                                    
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        ) : (
+                                            <div>
                                             </div>
-                                        </div>
-                
-                                    </div>
-                                </div>
-                            )
-                        })
-                    ) : (
-                        <div> No Courses Found 
+                                        )
+                                    }
+                                </ul>
+                            </div>
+            
                         </div>
-                    )
-                }
-            </ul>
-          </div>
+
+                        </div>
+                    </div>
+                    
+                    <div className="col-xs-12 col-sm-3">
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h6>Recent Course Allocations</h6>
+                            </div>
+
+                            <div className="panel-body">
+                            
+        
+                        </div>
+
+                        </div>
+                    </div>
+
+                    <div className="col-xs-12 col-sm-3">
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h6>Upcoming Examinations</h6>
+                            </div>
+
+                            <div className="panel-body">
+                            
+        
+                        </div>
+
+                        </div>
+                    </div>
+
+                    <div className="col-xs-12 col-sm-3">
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h6>Upcoming Assignments</h6>
+                            </div>
+
+                            <div className="panel-body">
+                            
+        
+                        </div>
+
+                        </div>
+                    </div>
+                    
+                    </section>
+                
+                    <section className="tab-pane fade" id="users" />
+                    <section className="tab-pane fade" id="mail" />
+                </section>
+                </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
         );
       }
 }

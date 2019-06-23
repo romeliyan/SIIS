@@ -14,7 +14,8 @@ class Assignment extends Component{
         instructions: '',
         courseName: '',
         assignmentList: [],
-        assignmentID: ''
+        assignmentID: '',
+        courseID: ''
 
     };
 
@@ -112,16 +113,26 @@ class Assignment extends Component{
 
     }
 
-    handleRegister = (e) => {
+    getCourseID = () => {
+
+        const course = this.state.courseList.find(x => x.name === this.state.courseName);
+        const courseID = course._id;
+        return courseID
+    }
+
+    handleRegister = async (e) => {
 
         e.preventDefault();
+
+        const courseIDs = await this.getCourseID();
 
         const assignment = {
             name: this.state.name,
             instructions: this.state.instructions,
             dueDate: this.state.date,
             marks: this.state.marks,
-            courseName: this.state.courseName
+            courseName: this.state.courseName,
+            courseID: courseIDs
         }
 
         console.log(assignment);
@@ -132,6 +143,7 @@ class Assignment extends Component{
         }).catch(err => {
             this.props.alert.error(err.response.data);
         })
+        
     }
 
 

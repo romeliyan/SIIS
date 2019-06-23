@@ -2,6 +2,17 @@ const express = require('express');
 const authMiddleware = require('../../middleware/auth');
 const {Course, ValidateCourse} = require('../../models/course_models/course');
 const router = express.Router();
+const nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'nodeudith@gmail.com',
+      pass: 'nodeproject'
+    }
+  });
+
+  
 
 router.get('/', async (req, res) => {
 
@@ -18,14 +29,31 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
 
-    const course = await Course.findById(req.params.id);
+    const email=req.params.id;
+    console.log(req.params.id);
+    var mailOptions = {
+        from: 'nodeudith@gmail.com',
+        to: email,
+        subject: 'Added to the course',
+        text: `You have been added to a new module.Login for more details.`
+        // html: '<h1>Hi Smartherd</h1><p>Your Messsage</p>'        
+      };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
 
-    if(!course){
-        return res.status(404).send('Course information with the given id does not exist');
-    }
+    //const course = await Course.findById(req.params.id);
 
-    console.log('Course information found and sent');
-    res.send(course);
+    //if(!course){
+     //   return res.status(404).send('Course information with the given id does not exist');
+    //}
+
+    //console.log('Course information found and sent');
+    //res.send(course);
     
 });
 

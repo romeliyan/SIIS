@@ -17,6 +17,10 @@ const CourseSchema = new Schema({
     code: {
         type: String,
         required: true
+    },
+    enrollKey: {
+        type: String,
+        required: true
     }
 });
 
@@ -27,7 +31,8 @@ function validateCourse(Course){
     const courseValidateSchema = {
         name: Joi.string().required(),
         lecture: Joi.string().required(),
-        code: Joi.string().required()
+        code: Joi.string().required(),
+        enrollKey: Joi.string().required()
     };
 
     return Joi.validate(Course, courseValidateSchema);

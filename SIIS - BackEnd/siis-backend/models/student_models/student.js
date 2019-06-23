@@ -27,7 +27,9 @@ function validateStudent(student) {
     lastName: Joi.string().required(),
     email: Joi.string().email({ minDomainAtoms: 2 }),
     nic: Joi.string().required(),
-    mobileNumber: Joi.string().required(),
+    mobileNumber: Joi.number()
+      .max(10)
+      .required(),
     username: Joi.string()
       .alphanum()
       .min(3)

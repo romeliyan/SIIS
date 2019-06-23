@@ -3,6 +3,7 @@ const express = require("express");
 const Student = require("../../models/student_models/student");
 const student_enrolled = require("../../models/student_models/student_course");
 const assignment = require("../../models/student_models/student_assignment");
+const student_assignment_mapper = require("../../models/student_models/student_assignment_mapper");
 const router = express.Router();
 
 router.post("/", (req, res) => {
@@ -112,7 +113,6 @@ router.get("/assignments/:courseID", (req, res) => {
 
 //GET ALL --
 router.get("/assignments", (req, res) => {
-  
   assignment.find({}, function(err, doc) {
     if (err) {
       console.log(err);
@@ -121,6 +121,20 @@ router.get("/assignments", (req, res) => {
     console.log(doc);
     res.send(doc).status(200);
   });
+});
+
+//student_assignment_mapper POST
+
+router.post("/assignments/upload", (req, res) => {
+  let assignment_upload = new student_assignment_mapper(req.body);
+
+  assignment_upload
+    .save()
+    .then(response => {
+      console.log(response);
+      res.send(response).status(200);
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

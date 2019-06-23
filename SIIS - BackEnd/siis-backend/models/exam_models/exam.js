@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const Schema = mongoose.Schema;
+const DateOnly = require('mongoose-dateonly')(mongoose);
 
 const ExamSchema = new Schema({
 
@@ -20,12 +21,22 @@ const ExamSchema = new Schema({
     },
 
     date: {
-        type: Date,
+        type: DateOnly,
         required: true
     },
 
     marks: {
         type: Number,
+        required: true
+    },
+
+    courseName: {
+        type: String, 
+        required: true
+    },
+
+    examinationHall: {
+        type: String, 
         required: true
     }
 });
@@ -38,7 +49,10 @@ function validateExam(exam){
         name: Joi.string().required(),
         instructions: Joi.string().required(),
         date: Joi.date().required(),
-        marks: Joi.number().required()
+        marks: Joi.number().required(),
+        courseName: Joi.string().required(),
+        examinationHall: Joi.string().required()
+
     };
 
     return Joi.validate(exam, examValidateSchema);

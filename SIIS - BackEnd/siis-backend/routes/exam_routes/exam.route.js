@@ -10,9 +10,9 @@ router.get('/', async (req, res) => {
         const exams = await Exam.find().sort('name');
         res.send(exams);
     }
-    else if(Object.keys(req.query).length === 1 && Object.keys(req.query)[0] === 'name'){
-        console.log('Query parameters set:{name}');
-        const exams = await Exam.find({name: req.query.name}).sort('name');
+    else if(Object.keys(req.query).length === 1 && Object.keys(req.query)[0] === 'courseName'){
+        console.log('Query parameters set:{Course Name}');
+        const exams = await Exam.find({courseName: req.query.courseName}).sort('name');
         res.send(exams);
     }
     else{

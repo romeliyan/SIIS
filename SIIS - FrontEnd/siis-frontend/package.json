@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
+    "mongoose-dateonly": "^1.0.6",
     "nodemailer": "^6.1.1",
     "react": "^16.8.6",
     "react-alert": "^5.5.0",
@@ -12,7 +13,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
-    "react-transition-group": "^4.0.1"
+    "react-transition-group": "^4.0.1",
+    "reactstrap": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

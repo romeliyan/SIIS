@@ -8,13 +8,13 @@
 
 ###### Submitted by:
 
-###### ITXXXXXXX - 
+###### IT16107410 - Liyanage R.K.B.
 
 ###### IT17003674 - Jayasinghe D.P.P
 
 ###### IT17006712- Dias A.A.M.R
 
-###### IT17XXXXX - 
+###### IT17038638 - Pannala U.K 
 
 ###### Weekend Batch
 
@@ -30,7 +30,7 @@
 
 
 
-## This following document contains the user guide for installation and initial setup of the School
+## This following document contains the user guide for installation and initial setup of the SIIS
 
 Management System developed by the members of this project.
 

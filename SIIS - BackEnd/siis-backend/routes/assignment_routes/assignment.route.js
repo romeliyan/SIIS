@@ -15,6 +15,11 @@ router.get('/', async (req, res) => {
         const assignments = await Assignment.find({name: req.query.name}).sort('name');
         res.send(assignments);
     }
+    else if(Object.keys(req.query).length === 1 && Object.keys(req.query)[0] === 'courseName'){
+        console.log('Query parameters set:{Course Name}');
+        const assignments = await Assignment.find({courseName: req.query.courseName}).sort('name');
+        res.send(assignments);
+    }   
     else{
         console.log('400 - Bad Request');
         return res.status(400).send('Invalid query parameters. {name}');

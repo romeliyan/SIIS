@@ -8,13 +8,13 @@
 
 ###### Submitted by:
 
-###### IT16107410 - Liyanage R.K.B.
+###### IT16107410 - Liyanage R.K.B.  - Github Account Name - Romesh Liyanage
 
-###### IT17003674 - Jayasinghe D.P.P
+###### IT17003674 - Jayasinghe D.P.P - Github Account Name -  Pasindu Piumal
 
-###### IT17006712- Dias A.A.M.R
+###### IT17006712- Dias A.A.M.R      - Github Account Name -  Melan Rashitha
 
-###### IT17038638 - Pannala U.K 
+###### IT17038638 - Pannala U.K      - Github Account Name -  U PAnnala
 
 ###### Weekend Batch
 

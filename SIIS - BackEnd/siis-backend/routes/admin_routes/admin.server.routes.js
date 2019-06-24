@@ -2,6 +2,15 @@ const express = require('express');
 const authMiddleware = require('../../middleware/auth');
 const { Admin, ValidateAdmin } = require('../../models/admin_models/admin');
 const router = express.Router();
+const nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'nodeudith@gmail.com',
+        pass: 'nodeproject'
+    }
+})
 
 router.get('/', async (req, res) => {
 
@@ -17,16 +26,23 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    const email = req.params.id;
+    console.log(req.params.id);
 
-    const admin = await Admin.findById(req.params.id);
+    var mailOptions = {
+        from: 'nodeudth@gmail.com',
+        to: email,
+        subject: 'Added as an Admin',
+        text: `You have been added as an Admin of our Organization.`
+    };
 
-    if (!admin) {
-        return res.status(404).send('Admin information with the given id does not exist');
-    }
-
-    console.log('Admin information found and sent');
-    res.send(admin);
-
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
 
 router.post('/', (req, res) => {

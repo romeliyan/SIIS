@@ -18,7 +18,18 @@ class auth{
     }
 
     getDecodedToken(){
-        return this.token;
+        const token = jwtDecode(localStorage.getItem('token'));
+        this.token = token
+        return jwtDecode(token);
+    }
+
+    logoutWithout() {
+    localStorage.removeItem("token");
+    localStorage.clear();
+    }
+
+    getToken(){
+        return localStorage.getItem('token');
     }
 
     isAuthenticated(){
